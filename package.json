@@ -1,0 +1,13 @@
+{
+  "name": "AnimeLookup",
+  "version": "1.0.0",
+  "dependencies": {
+    "nightmare": "2.10.0",
+    "alert-node": "latest"
+  },
+  "author": "Kenny Nguyen <kenimorri@gmail.com>",
+  "description": "Muri Web Reader prototype",
+  "devDependencies": {
+    "electron": "1.7.9"
+  }
+}
