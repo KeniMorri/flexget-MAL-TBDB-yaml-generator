@@ -59,6 +59,19 @@ function dataObject(title, input, spacing) {
 	}
 }
 
+function fixDataObject() {
+	fs.readFile('./loaded.json', 'utf8', function (err,data) {
+		if (err) {
+		  return console.log(err);
+		}
+		var result = data.replace(/'/g, '"');
+	  
+		fs.writeFile('./loaded.json', result, 'utf8', function (err) {
+		   if (err) return console.log(err);
+		});
+	  });
+}
+
 
 exports.init = init;
 exports.statement = statement;
@@ -66,6 +79,7 @@ exports.initOverride = initOverride;
 exports.initOverrideV2 = initOverrideV2;
 exports.print = print;
 exports.data = dataObject;
+exports.fixData = fixDataObject;
 exports.initBasic = initBasic;
 exports.initBasicV2 = initBasicV2;
 
