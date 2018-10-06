@@ -4,7 +4,7 @@ var Nightmare = require('nightmare');
 
 
 var Log = require('./log.js');
-Log.initBasicV2('./', 'Test');
+Log.initOverrideV2('./', 'LogOutput.txt');
 
 
 //Horrible Subs Get Show List
@@ -25,6 +25,7 @@ for(var i = 0; showlist[i]; i++) {
 
 
 var previousAnimeLoaded = require('./loaded.json')
+Log.data('Previous Anime Loaded', previousAnimeLoaded, true);
 console.log(previousAnimeLoaded);
 
 var cleanAnimeList = [];
@@ -177,7 +178,7 @@ var malSearch = function(icleanAnimeList) {
 			.then(function(title) {
 				console.log('Japanese Title');
 				console.log(title);
-				Log.statement(title, true);
+				//Log.statement(title, true);
 				jpnAnimeList.push(title);
 
 				icleanAnimeList.shift();
@@ -281,12 +282,12 @@ var tvDBsearch = function(ijpnUrlList) {
 }
 
 var dataPacker = function() {
-	Log.initBasicV2('./', 'OUTPUT');
-	for(var i = 0; cleanAnimeList[i]; i++) {
+	Log.initOverrideV2('./', 'ForFlexGet.txt');
+	for(var i = 0; newAnime[i]; i++) {
 		if(animeID[i] == 'MISSING') {
 			Log.print('>-------------------------WARNING BELOW--------------------<\n');
 		}
-		Log.print('      - ' + cleanAnimeList[i] + ':\n');
+		Log.print('      - ' + newAnime[i] + ':\n');
 		Log.print('          set:\n');
 		Log.print('            tvdb_id:  ' + animeID[i] + '\n');
 		if(animeID[i] == 'MISSING') {
